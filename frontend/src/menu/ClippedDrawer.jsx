@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,7 +7,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -46,6 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function ClippedDrawer() {
   const classes = useStyles();
+  const [selected, setSelected] = useState('');
 
   return (
     <div className={classes.root}>
@@ -60,29 +60,29 @@ export default function ClippedDrawer() {
       <Drawer className={classes.drawer} variant="permanent" classes={{ paper: classes.drawerPaper, }}>
         <div className={classes.toolbar} />
         <List>
-            <ListItem>
+            <ListItem button key="Organizations" onClick={() => setSelected('Organizations')} selected={selected === 'Organizations'}>
                 <ListItemIcon><GroupWork /></ListItemIcon>
                 <ListItemText primary='Organization' />
             </ListItem>
-            <ListItem>
+            <ListItem button key="Teams" onClick={() => setSelected('Teams')} selected={selected === 'Teams'}>
                 <ListItemIcon><Group /></ListItemIcon>
                 <ListItemText primary='Teams' />
             </ListItem>
-            <ListItem>
+            <ListItem button key="Talents" onClick={() => setSelected('Talents')} selected={selected === 'Talents'}>
                 <ListItemIcon><Face /></ListItemIcon>
                 <ListItemText primary='Talents' />
             </ListItem>
-            <ListItem>
+            <ListItem button key="Skills" onClick={() => setSelected('Skills')} selected={selected === 'Skills'}>
                 <ListItemIcon><BarChart /></ListItemIcon>
                 <ListItemText primary='Skills' />
             </ListItem>
-            <ListItem>
+            <ListItem button key="Formations" onClick={() => setSelected('Formations')} selected={selected === 'Formations'}>
                 <ListItemIcon><Timeline /></ListItemIcon>
                 <ListItemText primary='Formations' />
             </ListItem>
-            <ListItem>
+            <ListItem button key="Reviews" onClick={() => setSelected('Reviews')} selected={selected === 'Reviews'}>
                 <ListItemIcon><ThumbsUpDown /></ListItemIcon>
-                <ListItemText primary='Evaluations' />
+                <ListItemText primary='Reviews' />
             </ListItem>
         </List>
       </Drawer>
