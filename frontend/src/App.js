@@ -10,7 +10,6 @@ import './App.css';
 import React, { useState } from 'react';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -23,7 +22,7 @@ import Face from '@material-ui/icons/Face';
 import BarChart from '@material-ui/icons/BarChart';
 import Group from '@material-ui/icons/Group';
 import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown';
-import Timeline from '@material-ui/icons/Timeline';
+import School from '@material-ui/icons/School';
 import Avatar from '@material-ui/core/Avatar';
 
 const drawerWidth = 240;
@@ -128,7 +127,7 @@ function App() {
                 </Link>
                 <Link to="/formations" className={classes.drawerLink}>
                   <ListItem button key="Formations" onClick={() => setSelected('Formations')} selected={selected === 'Formations'}>
-                    <ListItemIcon><Timeline /></ListItemIcon>
+                    <ListItemIcon><School /></ListItemIcon>
                     <ListItemText primary='Formations' />
                   </ListItem>
                 </Link>

@@ -4,16 +4,15 @@ import TeamItem from './TeamItem';
 
 
 export default function TeamsMenu() {
-
     const teams = [
       {
         name: "R & D",
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ29iGthzt4jUeudY9f0aj4l3vyhDbx1s3nFJICD9jJVYn8NU5Q-w",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoF4IXJ7kYuJ9FIClxbCmzPCQi3KkIaZRPHSPDGjuQKR-Ni_8V",
         size: 8
       },
       {
         name: "Product",
-        logo: "https://www.incimages.com/uploaded_files/image/1940x900/products_364475.jpg",
+        logo: "https://i.udemycdn.com/course/750x422/1352222_6bfa_2.jpg",
         size: 1
       },
       {
@@ -24,7 +23,6 @@ export default function TeamsMenu() {
     ];
 
     return (
-      <div className="root">
         <Grid container spacing={3} direction="row">
           {teams.map(team=> (
             <Grid item key={team.name}>
@@ -32,6 +30,5 @@ export default function TeamsMenu() {
             </Grid>
           ))}
         </Grid>
-      </div>
     );
 }

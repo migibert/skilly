@@ -8,25 +8,25 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Timeline from '@material-ui/icons/Timeline';
 import BarChart from '@material-ui/icons/BarChart';
 import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 import PersonAdd from '@material-ui/icons/PersonAdd';
+import Face from '@material-ui/icons/Face';
+import School from '@material-ui/icons/School';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
-      maxWidth: 300,
+      maxWidth: 400,
     },
     media: {
-      width: 300,
-      height: 300,
+      paddingTop: '100%',
+      marginTop: 30,
     },
     title: {
       fontSize: 14,
-    },
-    left: {
-    },
-    right: {
     }
   })
 );
@@ -45,11 +45,23 @@ export default function TeamItem(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <IconButton aria-label="Members">
+          <IconButton aria-label="Add Member">
             <PersonAdd />
           </IconButton>
-          <IconButton aria-label="Charts">
+          <IconButton aria-label="Members">
+            <Face />
+          </IconButton>
+          <IconButton aria-label="Skills">
             <BarChart />
+          </IconButton>
+          <IconButton aria-label="Formations">
+            <School />
+          </IconButton>
+          <IconButton aria-label="Charts">
+            <Timeline />
+          </IconButton>
+          <IconButton aria-label="Edit">
+            <Edit />
           </IconButton>
           <IconButton aria-label="Delete">
             <Delete />
