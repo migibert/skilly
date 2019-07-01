@@ -8,7 +8,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import Timeline from '@material-ui/icons/Timeline';
 import BarChart from '@material-ui/icons/BarChart';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
@@ -19,7 +18,7 @@ import School from '@material-ui/icons/School';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
-      maxWidth: 400,
+      maxWidth: 350,
     },
     media: {
       paddingTop: '100%',
@@ -56,9 +55,6 @@ export default function TeamItem(props) {
           </IconButton>
           <IconButton aria-label="Formations">
             <School />
-          </IconButton>
-          <IconButton aria-label="Charts">
-            <Timeline />
           </IconButton>
           <IconButton aria-label="Edit">
             <Edit />

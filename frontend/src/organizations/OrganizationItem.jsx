@@ -8,23 +8,26 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import BarChart from '@material-ui/icons/BarChart';
 import PersonAdd from '@material-ui/icons/PersonAdd';
+import Timeline from '@material-ui/icons/Timeline';
+import Edit from '@material-ui/icons/Edit';
+import Delete from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
-      maxWidth: 250,
+      maxWidth: 400,
     },
     media: {
-      width: 250,
-      height: 250,
+      paddingTop: '100%',
+      marginTop: 30,
     },
     title: {
       fontSize: 14,
-    },
+    }
   })
 );
 
-// Expected props: organization { name, logo }
+// Expected props: organization { name, logo, website }
 export default function OrganizationItem(props) {
     const classes = useStyles();
 
@@ -37,7 +40,13 @@ export default function OrganizationItem(props) {
             <PersonAdd />
           </IconButton>
           <IconButton aria-label="Invite member">
-            <BarChart />
+            <Timeline />
+          </IconButton>
+          <IconButton aria-label="Edit">
+            <Edit />
+          </IconButton>
+          <IconButton aria-label="Delete">
+            <Delete />
           </IconButton>
         </CardActions>
       </Card>
