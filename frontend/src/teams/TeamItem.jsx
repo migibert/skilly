@@ -13,7 +13,7 @@ import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import Face from '@material-ui/icons/Face';
-import School from '@material-ui/icons/School';
+import Timeline from '@material-ui/icons/Timeline';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,8 +53,8 @@ export default function TeamItem(props) {
           <IconButton aria-label="Skills">
             <BarChart />
           </IconButton>
-          <IconButton aria-label="Formations">
-            <School />
+          <IconButton aria-label="Charts">
+            <Timeline />
           </IconButton>
           <IconButton aria-label="Edit">
             <Edit />

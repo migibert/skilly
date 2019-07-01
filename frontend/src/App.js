@@ -4,12 +4,12 @@ import TalentsMenu from './talents/TalentsMenu';
 import SkillsMenu from './skills/SkillsMenu';
 import FormationsMenu from './formations/FormationsMenu';
 import ReviewsMenu from './reviews/ReviewsMenu';
-import ProfileMenu from './profile/ProfileMenu';
 import OrganizationsMenuBar from './organizations/OrganizationsMenuBar';
+import ProfileMenuBar from './profile/ProfileMenuBar';
 
 import './App.css';
 import React, { useState } from 'react';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Link, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -88,19 +88,17 @@ function App() {
               <CssBaseline />
               <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                  <Link to="/" className={classes.appBarLink}>
+                  <Link to="/teams" className={classes.appBarLink}>
                     <Avatar src="logo.png" className={classes.avatar} />
                   </Link>
-                  <Link to="/" className={classes.appBarLink}>
+                  <Link to="/teams" className={classes.appBarLink}>
                     <Typography variant="h6" noWrap>
                       Skilly
                     </Typography>
                   </Link>
                   <div className={classes.appBarRightMenu} onClick={() => setSelected('')}>
                     <OrganizationsMenuBar />
-                    <Link to="/profile" className={classes.appBarLink}>
-                      <Avatar src="user.png" className={classes.avatar} />
-                    </Link>
+                    <ProfileMenuBar />
                   </div>
                 </Toolbar>
               </AppBar>
@@ -145,14 +143,16 @@ function App() {
               </Drawer>
               <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <Route exact path="/" component={this} />
+                <Route exact path="/">
+                  <Redirect to="/teams" push />
+                </Route>
                 <Route path="/organizations" component={OrganizationsMenu} />
                 <Route path="/teams" component={TeamsMenu} />
                 <Route path="/talents" component={TalentsMenu} />
                 <Route path="/skills" component={SkillsMenu} />
                 <Route path="/formations" component={FormationsMenu} />
                 <Route path="/reviews" component={ReviewsMenu} />
-                <Route path="/profile" component={ProfileMenu} />
+                <Route path="/profiles/:username" component={this} />
                 <Typography align="center" display="block" variant="caption" className={classes.footer}>
                   Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC 3.0 BY</a>
                 </Typography>

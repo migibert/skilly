@@ -6,9 +6,9 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
-import BarChart from '@material-ui/icons/BarChart';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import Timeline from '@material-ui/icons/Timeline';
+import Face from '@material-ui/icons/Face';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
 
@@ -39,7 +39,10 @@ export default function OrganizationItem(props) {
           <IconButton aria-label="Invite member">
             <PersonAdd />
           </IconButton>
-          <IconButton aria-label="Invite member">
+          <IconButton aria-label="Members">
+            <Face />
+          </IconButton>
+          <IconButton aria-label="Charts">
             <Timeline />
           </IconButton>
           <IconButton aria-label="Edit">
