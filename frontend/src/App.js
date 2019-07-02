@@ -96,7 +96,7 @@ function App() {
                       Skilly
                     </Typography>
                   </Link>
-                  <div className={classes.appBarRightMenu} onClick={() => setSelected('')}>
+                  <div className={classes.appBarRightMenu}>
                     <OrganizationsMenuBar />
                     <ProfileMenuBar />
                   </div>

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-// Expected props: talent { firstname, lastname, picture }
+// Expected props: talent { firstname, lastname, picture, arrival }
 export default function TalentItem(props) {
     const classes = useStyles();
 
