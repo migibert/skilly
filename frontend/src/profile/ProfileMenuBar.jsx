@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useGlobal } from 'reactn';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -32,15 +33,10 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const profile = {
-  username: "John Doe",
-  picture: "https://at-cdn-s01.audiotool.com/2014/09/07/documents/SwaOa0gF51Ai06D6LDLyJHubdbWXNu/0/cover256x256-9cbba6b2878944c6b29e14bdead8ac32.jpg"
-};
-
 export default function ProfileMenuBar() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(profile);
+  const [user, setUser] = useGlobal('user');
 
   function handleDialogOpen() {
     setOpen(true);
@@ -48,22 +44,22 @@ export default function ProfileMenuBar() {
 
   const handleDialogClose = value => {
     setOpen(false);
-    setSelectedValue(value);
+    setUser(value);
   };
 
   return (
     <div className="root">
       <Button onClick={handleDialogOpen} className={classes.appBarLink}>
-        <Avatar src={selectedValue.logo || 'http://www.iconarchive.com/download/i103458/paomedia/small-n-flat/profile.ico'} className={classes.avatar} />
+        <Avatar src={user.picture || 'http://www.iconarchive.com/download/i103458/paomedia/small-n-flat/profile.ico'} className={classes.avatar} />
       </Button>
       <Dialog open={open} onClose={handleDialogClose}>
         <DialogTitle id="My Profile">Edit Profile</DialogTitle>
         <List>
-          <ListItem button onClick={() => handleDialogClose(profile)} key={profile.username}>
+          <ListItem button onClick={() => handleDialogClose(user)} key={user.username}>
             <ListItemAvatar>
-              <Avatar className={classes.avatar} src={profile.picture} />
+              <Avatar className={classes.avatar} src={user.picture} />
             </ListItemAvatar>
-            <ListItemText primary={profile.username} />
+            <ListItemText primary={user.username} />
           </ListItem>
         </List>
       </Dialog>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useGlobal } from 'reactn';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -34,21 +35,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const organizations = [
-  {
-    name: "Teemo",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5racTQ0g8iJiXJG7ZozBqbVjh8YwdUenRSDQgpZV4uMS3TKlX"
-  },
-  {
-    name: "Numergy",
-    logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
-  }
-];
-
 export default function OrganizationsMenuBar() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(organizations[0]);
+  const [organizations, setOrganizations] = useGlobal('organizations');
+  const [organization, setOrganization] = useGlobal('organization');
 
   function handleDialogOpen() {
     setOpen(true);
@@ -56,13 +47,13 @@ export default function OrganizationsMenuBar() {
 
   const handleDialogClose = value => {
     setOpen(false);
-    setSelectedValue(value);
+    setOrganization(value);
   };
 
   return (
     <div className="root">
       <Button onClick={handleDialogOpen} className={classes.appBarLink}>
-        <Avatar src={selectedValue.logo || 'organization.png'} className={classes.avatar} />
+        <Avatar src={organization.logo || 'organization.png'} className={classes.avatar} />
       </Button>
       <Dialog open={open} onClose={handleDialogClose}>
         <DialogTitle id="Organization Choice">Select or create an organization</DialogTitle>

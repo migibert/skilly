@@ -9,6 +9,7 @@ import ProfileMenuBar from './profile/ProfileMenuBar';
 
 import './App.css';
 import React, { useState } from 'react';
+import { useGlobal, setGlobal } from 'reactn';
 import { Route, Link, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -28,7 +29,6 @@ import GroupWork from '@material-ui/icons/GroupWork';
 import Avatar from '@material-ui/core/Avatar';
 
 const drawerWidth = 240;
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -77,9 +77,32 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+setGlobal({
+  user: {
+    username: "John Doe",
+    picture: "https://at-cdn-s01.audiotool.com/2014/09/07/documents/SwaOa0gF51Ai06D6LDLyJHubdbWXNu/0/cover256x256-9cbba6b2878944c6b29e14bdead8ac32.jpg"
+  },
+  organizations: [
+    {
+      name: "Teemo",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5racTQ0g8iJiXJG7ZozBqbVjh8YwdUenRSDQgpZV4uMS3TKlX"
+    },
+    {
+      name: "Numergy",
+      logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
+    }
+  ],
+  organization: {
+     name: "Numergy",
+     logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
+  }
+});
+
 function App() {
     const classes = useStyles();
     const [selected, setSelected] = useState('');
+    const [user, setUser] = useGlobal('user');
+    const [organization, setOrganization] = useGlobal('organization');
 
     return (
       <div className="App">
