@@ -104,6 +104,15 @@ function App() {
     const [user, setUser] = useGlobal('user');
     const [organization, setOrganization] = useGlobal('organization');
 
+    const sideMenuItems = [
+      {route: '/organizations', id: 'Organizations', icon: <GroupWork />},
+      {route: '/teams', id: 'Teams', icon: <Group />},
+      {route: '/talents', id: 'Talents', icon: <Face />},
+      {route: '/skills', id: 'Skills', icon: <BarChart />},
+      {route: '/formations', id: 'Formations', icon: <School />},
+      {route: '/reviews', id: 'Reviews', icon: <ThumbsUpDown />},
+    ]
+
     return (
       <div className="App">
         <Router>
@@ -127,42 +136,14 @@ function App() {
               </AppBar>
               <Drawer className={classes.drawer} variant="permanent" classes={{ paper: classes.drawerPaper, }}>
                 <div className={classes.toolbar} />
-                <Link to="/organizations" className={classes.drawerLink}>
-                  <ListItem button key="Organizations" onClick={() => setSelected('Organizations')} selected={selected === 'Organizations'}>
-                    <ListItemIcon><GroupWork /></ListItemIcon>
-                    <ListItemText primary='Organizations' />
-                  </ListItem>
-                </Link>
-                <Link to="/teams" className={classes.drawerLink}>
-                  <ListItem button key="Teams" onClick={() => setSelected('Teams')} selected={selected === 'Teams'}>
-                    <ListItemIcon><Group /></ListItemIcon>
-                    <ListItemText primary='Teams' />
-                  </ListItem>
-                </Link>
-                <Link to="/talents" className={classes.drawerLink}>
-                  <ListItem button key="Talents" onClick={() => setSelected('Talents')} selected={selected === 'Talents'}>
-                    <ListItemIcon><Face /></ListItemIcon>
-                    <ListItemText primary='Talents' />
-                  </ListItem>
-                </Link>
-                <Link to="/skills" className={classes.drawerLink}>
-                  <ListItem button key="Skills" onClick={() => setSelected('Skills')} selected={selected === 'Skills'}>
-                    <ListItemIcon><BarChart /></ListItemIcon>
-                    <ListItemText primary='Skills' />
-                  </ListItem>
-                </Link>
-                <Link to="/formations" className={classes.drawerLink}>
-                  <ListItem button key="Formations" onClick={() => setSelected('Formations')} selected={selected === 'Formations'}>
-                    <ListItemIcon><School /></ListItemIcon>
-                    <ListItemText primary='Formations' />
-                  </ListItem>
-                </Link>
-                <Link to="/reviews" className={classes.drawerLink}>
-                  <ListItem button key="Reviews" onClick={() => setSelected('Reviews')} selected={selected === 'Reviews'}>
-                    <ListItemIcon><ThumbsUpDown /></ListItemIcon>
-                    <ListItemText primary='Reviews' />
-                  </ListItem>
-                </Link>
+                {sideMenuItems.map(item =>
+                  <Link to={item.route} className={classes.drawerLink}>
+                    <ListItem button key={item.id} onClick={() => setSelected(item.id)} selected={selected === item.id}>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.id} />
+                    </ListItem>
+                   </Link>
+                )}
               </Drawer>
               <main className={classes.content}>
                 <div className={classes.toolbar} />
