@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGlobal } from 'reactn';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -35,11 +35,26 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const fakeOrganizations = [
+  {
+    name: "Teemo",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5racTQ0g8iJiXJG7ZozBqbVjh8YwdUenRSDQgpZV4uMS3TKlX"
+  },
+  {
+    name: "Numergy",
+    logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
+  }
+]
+
 export default function OrganizationsMenuBar() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [organizations, setOrganizations] = useGlobal('organizations');
   const [organization, setOrganization] = useGlobal('organization');
+
+  useEffect(() => {
+    setOrganizations(fakeOrganizations);
+  }, []);
 
   function handleDialogOpen() {
     setOpen(true);

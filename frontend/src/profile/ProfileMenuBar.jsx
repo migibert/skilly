@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGlobal } from 'reactn';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -33,10 +33,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const fakeUser = {
+  username: "John Doe",
+  picture: "https://at-cdn-s01.audiotool.com/2014/09/07/documents/SwaOa0gF51Ai06D6LDLyJHubdbWXNu/0/cover256x256-9cbba6b2878944c6b29e14bdead8ac32.jpg"
+};
+
 export default function ProfileMenuBar() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [user, setUser] = useGlobal('user');
+
+  useEffect(() => {
+    const fetchUserProfile = () => { return { data: fakeUser }};
+    const response = fetchUserProfile();
+    setUser(response.data);
+  }, []);
 
   function handleDialogOpen() {
     setOpen(true);
