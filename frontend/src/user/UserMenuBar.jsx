@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { useGlobal } from 'reactn';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -34,11 +35,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const fakeUser = {
+  id: 1,
   username: "John Doe",
   picture: "https://at-cdn-s01.audiotool.com/2014/09/07/documents/SwaOa0gF51Ai06D6LDLyJHubdbWXNu/0/cover256x256-9cbba6b2878944c6b29e14bdead8ac32.jpg"
 };
 
-export default function ProfileMenuBar() {
+const UserMenuBar = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [user, setUser] = useGlobal('user');
@@ -56,6 +58,7 @@ export default function ProfileMenuBar() {
   const handleDialogClose = value => {
     setOpen(false);
     setUser(value);
+    props.history.push('/me');
   };
 
   return (
@@ -64,7 +67,7 @@ export default function ProfileMenuBar() {
         <Avatar src={user.picture || 'http://www.iconarchive.com/download/i103458/paomedia/small-n-flat/profile.ico'} className={classes.avatar} />
       </Button>
       <Dialog open={open} onClose={handleDialogClose}>
-        <DialogTitle id="My Profile">Edit Profile</DialogTitle>
+        <DialogTitle id="My Profile">Edit User</DialogTitle>
         <List>
           <ListItem button onClick={() => handleDialogClose(user)} key={user.username}>
             <ListItemAvatar>
@@ -77,3 +80,5 @@ export default function ProfileMenuBar() {
     </div>
   );
 };
+
+export default withRouter(UserMenuBar);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { Link, withRouter } from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 // Expected props: organization { name, logo, website }
-export default function OrganizationItem(props) {
+const OrganizationItem = (props) => {
     const classes = useStyles();
 
     return (
@@ -45,7 +46,7 @@ export default function OrganizationItem(props) {
           <IconButton aria-label="Charts">
             <Timeline />
           </IconButton>
-          <IconButton aria-label="Edit">
+          <IconButton aria-label="Edit" onClick={() => { props.history.push(`/organizations/${props.organization.name}`)}}>
             <Edit />
           </IconButton>
           <IconButton aria-label="Delete">
@@ -55,3 +56,5 @@ export default function OrganizationItem(props) {
       </Card>
     );
 }
+
+export default withRouter(OrganizationItem);

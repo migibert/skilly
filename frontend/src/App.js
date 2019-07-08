@@ -1,16 +1,18 @@
+import UserDetails from './user/UserDetails';
 import OrganizationsMenu from './organizations/OrganizationsMenu';
+import OrganizationDetails from './organizations/OrganizationDetails';
 import TeamsMenu from './teams/TeamsMenu';
 import TalentsMenu from './talents/TalentsMenu';
 import SkillsMenu from './skills/SkillsMenu';
 import FormationsMenu from './formations/FormationsMenu';
 import ReviewsMenu from './reviews/ReviewsMenu';
 import OrganizationsMenuBar from './organizations/OrganizationsMenuBar';
-import ProfileMenuBar from './profile/ProfileMenuBar';
+import ProfileMenuBar from './user/UserMenuBar';
 
 import './App.css';
 import React, { useState } from 'react';
 import { useGlobal, setGlobal } from 'reactn';
-import { Route, Link, Redirect, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -78,20 +80,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 setGlobal({
-  user: {
-    username: "John Doe",
-    picture: "https://at-cdn-s01.audiotool.com/2014/09/07/documents/SwaOa0gF51Ai06D6LDLyJHubdbWXNu/0/cover256x256-9cbba6b2878944c6b29e14bdead8ac32.jpg"
-  },
-  organizations: [
-    {
-      name: "Teemo",
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5racTQ0g8iJiXJG7ZozBqbVjh8YwdUenRSDQgpZV4uMS3TKlX"
-    },
-    {
-      name: "Numergy",
-      logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
-    }
-  ],
+  user: {},
+  organizations: [],
   organization: {
      name: "Numergy",
      logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
@@ -111,6 +101,17 @@ function App() {
       {route: '/skills', id: 'Skills', icon: <BarChart />},
       {route: '/formations', id: 'Formations', icon: <School />},
       {route: '/reviews', id: 'Reviews', icon: <ThumbsUpDown />},
+    ]
+
+    const routes = [
+      {path: '/me', component: UserDetails},
+      {path: '/organizations', component: OrganizationsMenu},
+      {path: '/organizations/:id', component: OrganizationDetails},
+      {path: '/teams', component: TeamsMenu},
+      {path: '/talents', component: TalentsMenu},
+      {path: '/skills', component: SkillsMenu},
+      {path: '/formations', component: FormationsMenu},
+      {path: '/reviews', component: ReviewsMenu},
     ]
 
     return (
@@ -137,7 +138,7 @@ function App() {
               <Drawer className={classes.drawer} variant="permanent" classes={{ paper: classes.drawerPaper, }}>
                 <div className={classes.toolbar} />
                 {sideMenuItems.map(item =>
-                  <Link to={item.route} className={classes.drawerLink}>
+                  <Link key={item.id} to={item.route} className={classes.drawerLink}>
                     <ListItem button key={item.id} onClick={() => setSelected(item.id)} selected={selected === item.id}>
                       <ListItemIcon>{item.icon}</ListItemIcon>
                       <ListItemText primary={item.id} />
@@ -147,16 +148,9 @@ function App() {
               </Drawer>
               <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <Route exact path="/">
-                  <Redirect to="/teams" push />
-                </Route>
-                <Route path="/organizations" component={OrganizationsMenu} />
-                <Route path="/teams" component={TeamsMenu} />
-                <Route path="/talents" component={TalentsMenu} />
-                <Route path="/skills" component={SkillsMenu} />
-                <Route path="/formations" component={FormationsMenu} />
-                <Route path="/reviews" component={ReviewsMenu} />
-                <Route path="/profiles/:username" component={this} />
+                  {routes.map(route => {
+                    return <Route exact key={route.path} path={route.path} component={route.component} />
+                  })}
                 <Typography align="center" display="block" variant="caption" className={classes.footer}>
                   Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC 3.0 BY</a>
                 </Typography>
