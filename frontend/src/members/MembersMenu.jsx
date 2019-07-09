@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import TalentItem from './TalentItem';
+import MemberItem from './MemberItem';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,27 +63,42 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const talents = [
+const members = [
   {
+    id: 1,
     firstname: "Adrian",
     lastname: "Mason",
     picture: "https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1",
     teams: ["Data Analysts"],
-    arrival: new Date('2016-10-10')
+    arrival: new Date('2016-10-10'),
+    manager: {
+      id: 3,
+      firstname: "Stephen",
+      lastname: "Ollie",
+      picture: "https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png",
+    }
   },
   {
+    id: 2,
     firstname: "Emmy",
     lastname: "Lee",
     picture: "https://cdn2.iconfinder.com/data/icons/scenarium-vol-4/128/019_avatar_woman_girl_female_account_profile_user-128.png",
     teams: ["Product"],
-    arrival: new Date('2017-06-03')
+    arrival: new Date('2017-06-03'),
+    manager: {
+      id: 3,
+      firstname: "Stephen",
+      lastname: "Ollie",
+      picture: "https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png",
+    }
   },
   {
+    id: 3,
     firstname: "Stephen",
     lastname: "Ollie",
     picture: "https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png",
-    teams: [ "R & D" ]
-
+    teams: [ "R & D" ],
+    manager: {},
   }
 ];
 
@@ -91,11 +106,15 @@ const talents = [
 export default function TalentsMenu() {
     const classes = useStyles();
     const [search, setSearch] = useState('');
-    const [filteredTalents, setFilteredTalents] = useState(talents);
+    const [filteredMembers, setFilteredMembers] = useState([]);
+
+    useEffect(() => {
+      setFilteredMembers(members);
+    }, []);
 
     function handleSearch(e) {
       setSearch(e.target.value);
-      setFilteredTalents(talents.filter(talent => talent.firstname.toLowerCase().startsWith(e.target.value) || talent.lastname.toLowerCase().startsWith(e.target.value)));
+      setFilteredMembers(members.filter(member => member.firstname.toLowerCase().startsWith(e.target.value) || member.lastname.toLowerCase().startsWith(e.target.value)));
     }
 
     return (
@@ -112,9 +131,9 @@ export default function TalentsMenu() {
         </div>
         <div className={classes.content}>
           <Grid container spacing={3} direction="row">
-            {filteredTalents.map(talent => (
-              <Grid item key={`${talent.firstname}-${talent.lastname}`}>
-                <TalentItem talent={talent} />
+            {filteredMembers.map(member => (
+              <Grid item key={`${member.id}`}>
+                <MemberItem member={member} />
               </Grid>
             ))}
           </Grid>

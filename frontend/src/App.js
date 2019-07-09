@@ -2,7 +2,7 @@ import UserDetails from './user/UserDetails';
 import OrganizationsMenu from './organizations/OrganizationsMenu';
 import OrganizationDetails from './organizations/OrganizationDetails';
 import TeamsMenu from './teams/TeamsMenu';
-import TalentsMenu from './talents/TalentsMenu';
+import MembersMenu from './members/MembersMenu';
 import SkillsMenu from './skills/SkillsMenu';
 import FormationsMenu from './formations/FormationsMenu';
 import ReviewsMenu from './reviews/ReviewsMenu';
@@ -97,10 +97,10 @@ function App() {
     const sideMenuItems = [
       {route: '/organizations', id: 'Organizations', icon: <GroupWork />},
       {route: '/teams', id: 'Teams', icon: <Group />},
-      {route: '/talents', id: 'Talents', icon: <Face />},
+      {route: '/members', id: 'Members', icon: <Face />},
       {route: '/skills', id: 'Skills', icon: <BarChart />},
-      {route: '/formations', id: 'Formations', icon: <School />},
       {route: '/reviews', id: 'Reviews', icon: <ThumbsUpDown />},
+      {route: '/formations', id: 'Formations', icon: <School />},      
     ]
 
     const routes = [
@@ -108,10 +108,10 @@ function App() {
       {path: '/organizations', component: OrganizationsMenu},
       {path: '/organizations/:id', component: OrganizationDetails},
       {path: '/teams', component: TeamsMenu},
-      {path: '/talents', component: TalentsMenu},
-      {path: '/skills', component: SkillsMenu},
-      {path: '/formations', component: FormationsMenu},
+      {path: '/members', component: MembersMenu},
+      {path: '/skills', component: SkillsMenu},      
       {path: '/reviews', component: ReviewsMenu},
+      {path: '/formations', component: FormationsMenu},
     ]
 
     return (
