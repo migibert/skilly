@@ -1,4 +1,4 @@
-package com.migibert.skilly;
+package com.migibert.skilly.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
