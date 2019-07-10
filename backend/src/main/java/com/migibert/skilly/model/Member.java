@@ -1,11 +1,13 @@
 package com.migibert.skilly.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import java.time.LocalDate;
 
 @Entity
+@Data
 public class Member extends PanacheEntity {
     private String firstname;
     private String lastname;

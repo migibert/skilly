@@ -6,6 +6,7 @@
   <artifactId>skilly</artifactId>
   <version>1.0-SNAPSHOT</version>
   <properties>
+    <java.version>1.11</java.version>
     <surefire-plugin.version>2.22.0</surefire-plugin.version>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
@@ -54,6 +55,11 @@
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.8</version>
     </dependency>
   </dependencies>
   <build>

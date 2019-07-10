@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/skills")
+@Path("/organizations/{organizationId}/skills")
 public class SkillResource {
 
     @POST
