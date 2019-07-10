@@ -37,10 +37,12 @@ const useStyles = makeStyles((theme) =>
 
 const fakeOrganizations = [
   {
+    id : 1,
     name: "Teemo",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5racTQ0g8iJiXJG7ZozBqbVjh8YwdUenRSDQgpZV4uMS3TKlX"
   },
   {
+    id: 2,
     name: "Numergy",
     logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
   }
@@ -55,7 +57,6 @@ export default function OrganizationsMenuBar() {
   useEffect(() => {
     setOrganizations(fakeOrganizations);
   }, [setOrganizations]);
-
   function handleDialogOpen() {
     setOpen(true);
   }
@@ -74,7 +75,7 @@ export default function OrganizationsMenuBar() {
         <DialogTitle id="Organization Choice">Select or create an organization</DialogTitle>
         <List>
           {organizations.map(organization => (
-            <ListItem button onClick={() => handleDialogClose(organization)} key={organization.name}>
+            <ListItem button onClick={() => handleDialogClose(organization)} key={organization.id}>
               <ListItemAvatar>
                 <Avatar className={classes.avatar} src={organization.logo} />
               </ListItemAvatar>

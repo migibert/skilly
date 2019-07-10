@@ -4,10 +4,12 @@ import ReviewItem from './ReviewItem';
 
 const fakeReviews = [
   {
-    title: "Bi Annual Review", 
-    date: "2019-06-06",
-    reviewer: "Mikael Gibert",
-    reviewee: "Théophile Dunoyer de Segonzac",
+    title: 'Bi Annual Review', 
+    date: '2019-06-06',
+    reviewer: 'Steve White',
+    reviewee: 'John Doe',
+    achievements: ["Define a security roadmap", "Implement strong security mechanisms"],
+    failures: ["Lack of communication"]
   },  
 ]
 
