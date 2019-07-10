@@ -84,8 +84,8 @@ setGlobal({
   user: {},
   organizations: [],
   organization: {
-     name: "Numergy",
-     logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
+     name: "No organization",
+     logo: "organization.png"
   }
 });
 

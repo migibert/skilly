@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useGlobal } from 'reactn';
+import axios from 'axios';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -35,19 +36,6 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const fakeOrganizations = [
-  {
-    id : 1,
-    name: "Teemo",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5racTQ0g8iJiXJG7ZozBqbVjh8YwdUenRSDQgpZV4uMS3TKlX"
-  },
-  {
-    id: 2,
-    name: "Numergy",
-    logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
-  }
-];
-
 export default function OrganizationsMenuBar() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -55,8 +43,17 @@ export default function OrganizationsMenuBar() {
   const [organization, setOrganization] = useGlobal('organization');
 
   useEffect(() => {
-    setOrganizations(fakeOrganizations);
-  }, [setOrganizations]);
+    const fetchOrganizations = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/organizations`);
+        setOrganizations(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchOrganizations();
+  }, []);
+
   function handleDialogOpen() {
     setOpen(true);
   }
@@ -69,7 +66,7 @@ export default function OrganizationsMenuBar() {
   return (
     <div className="root">
       <Button onClick={handleDialogOpen} className={classes.appBarLink}>
-        <Avatar src={organization.logo || 'organization.png'} className={classes.avatar} />
+        <Avatar title={organization.name} src={organization.logoUrl || 'organization.png'} className={classes.avatar} />
       </Button>
       <Dialog open={open} onClose={handleDialogClose}>
         <DialogTitle id="Organization Choice">Select or create an organization</DialogTitle>
@@ -77,7 +74,7 @@ export default function OrganizationsMenuBar() {
           {organizations.map(organization => (
             <ListItem button onClick={() => handleDialogClose(organization)} key={organization.id}>
               <ListItemAvatar>
-                <Avatar className={classes.avatar} src={organization.logo} />
+                <Avatar className={classes.avatar} src={organization.logoUrl} />
               </ListItemAvatar>
               <ListItemText primary={organization.name} />
             </ListItem>

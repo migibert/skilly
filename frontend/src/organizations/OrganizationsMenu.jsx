@@ -9,9 +9,9 @@ export default function OrganizationsMenu() {
   return (
     <Grid container spacing={3} direction="row">
       {organizations.map(organization => (
-        <Grid item key={organization.name}>
+        <Grid item key={organization.id}>
           <OrganizationItem organization={organization} />
-          </Grid>
+        </Grid>
       ))}
     </Grid>
   );

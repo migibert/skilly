@@ -34,7 +34,6 @@ const data = [{
 }];
 
 const TeamSkills = props => <div>
-  Skills of campaign number {props.match.params.id}
   <RadarChart width={1000} height={500} data={data}>
     <PolarGrid/>
     <PolarAngleAxis dataKey="skill"/>

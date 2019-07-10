@@ -5,8 +5,8 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
@@ -22,7 +22,7 @@ public class Organization extends PanacheEntity {
 
     private String logoUrl;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="organization_id"), inverseJoinColumns = @JoinColumn(name="member_id"))
     private Set<Member> members;
 }
