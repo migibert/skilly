@@ -32,7 +32,7 @@ import Avatar from '@material-ui/core/Avatar';
 import TeamSkills from "./teams/TeamSkills";
 
 const drawerWidth = 240;
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       display: 'flex',

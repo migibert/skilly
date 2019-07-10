@@ -13,7 +13,7 @@ import Face from '@material-ui/icons/Face';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(theme =>
   createStyles({
     card: {
       maxWidth: 400,
