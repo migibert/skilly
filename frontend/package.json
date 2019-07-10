@@ -2,17 +2,6 @@
   "name": "skilly",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.1.2",
-    "@material-ui/icons": "^4.2.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "reactn": "^2.1.4",
-    "typeface-roboto": "0.0.54",
-    "use-react-router": "^1.0.7"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -33,5 +22,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.1.2",
+    "@material-ui/icons": "^4.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "reactn": "^2.1.4",
+    "recharts": "^1.6.2",
+    "typeface-roboto": "0.0.54",
+    "use-react-router": "^1.0.7"
+  },
+  "devDependencies": {
+    "prop-types": "latest"
   }
 }

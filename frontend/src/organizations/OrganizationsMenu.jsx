@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import OrganizationItem from './OrganizationItem';
 
 export default function OrganizationsMenu() {
-  const [organizations, setOrganizations] = useGlobal('organizations');
+  const [organizations] = useGlobal('organizations');
 
   return (
     <Grid container spacing={3} direction="row">

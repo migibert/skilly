@@ -49,7 +49,7 @@ const UserMenuBar = (props) => {
     const fetchUserProfile = () => { return { data: fakeUser }};
     const response = fetchUserProfile();
     setUser(response.data);
-  }, []);
+  }, [setUser]);
 
   function handleDialogOpen() {
     setOpen(true);

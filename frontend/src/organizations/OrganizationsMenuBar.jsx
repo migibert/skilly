@@ -44,7 +44,7 @@ const fakeOrganizations = [
     name: "Numergy",
     logo: "https://pbs.twimg.com/profile_images/2577211498/doivvokdyalimii9zmc0_400x400.jpeg"
   }
-]
+];
 
 export default function OrganizationsMenuBar() {
   const classes = useStyles();
@@ -54,7 +54,7 @@ export default function OrganizationsMenuBar() {
 
   useEffect(() => {
     setOrganizations(fakeOrganizations);
-  }, []);
+  }, [setOrganizations]);
 
   function handleDialogOpen() {
     setOpen(true);

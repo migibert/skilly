@@ -11,9 +11,9 @@ import ProfileMenuBar from './user/UserMenuBar';
 
 import './App.css';
 import React, { useState } from 'react';
-import { useGlobal, setGlobal } from 'reactn';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { setGlobal } from 'reactn';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -29,6 +29,7 @@ import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown';
 import School from '@material-ui/icons/School';
 import GroupWork from '@material-ui/icons/GroupWork';
 import Avatar from '@material-ui/core/Avatar';
+import TeamSkills from "./teams/TeamSkills";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
@@ -91,8 +92,6 @@ setGlobal({
 function App() {
     const classes = useStyles();
     const [selected, setSelected] = useState('');
-    const [user, setUser] = useGlobal('user');
-    const [organization, setOrganization] = useGlobal('organization');
 
     const sideMenuItems = [
       {route: '/organizations', id: 'Organizations', icon: <GroupWork />},
@@ -100,8 +99,8 @@ function App() {
       {route: '/members', id: 'Members', icon: <Face />},
       {route: '/skills', id: 'Skills', icon: <BarChart />},
       {route: '/reviews', id: 'Reviews', icon: <ThumbsUpDown />},
-      {route: '/formations', id: 'Formations', icon: <School />},      
-    ]
+      {route: '/formations', id: 'Formations', icon: <School />},
+    ];
 
     const routes = [
       {path: '/me', component: UserDetails},
@@ -109,10 +108,11 @@ function App() {
       {path: '/organizations/:id', component: OrganizationDetails},
       {path: '/teams', component: TeamsMenu},
       {path: '/members', component: MembersMenu},
-      {path: '/skills', component: SkillsMenu},      
+      {path: '/skills', component: SkillsMenu},
       {path: '/reviews', component: ReviewsMenu},
       {path: '/formations', component: FormationsMenu},
-    ]
+      {path: '/teams/:id/skills', component: TeamSkills},
+    ];
 
     return (
       <div className="App">
