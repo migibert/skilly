@@ -1,5 +1,10 @@
 package com.migibert.skilly.model;
 
-public class Skill {
-    String name;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Skill extends PanacheEntity {
+    private String name;
 }
