@@ -1,0 +1,24 @@
+matrix:
+  include:
+    - language: java
+      jdk:
+        - oraclejdk11
+        - openjdk11
+      before_script:
+        - cd backend
+      script:
+        - ./mvnw clean test
+
+    - language: node_js
+      node_js:
+        - "stable"
+      cache:
+        directories:
+          - node_modules
+      before_script:
+        - cd frontend
+      script:
+        - npm ci      
+        - npm test
+        - npm run build
+
