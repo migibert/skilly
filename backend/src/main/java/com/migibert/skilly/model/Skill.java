@@ -1,19 +1,17 @@
 package com.migibert.skilly.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
+@Entity
 @Data
-public class Skill {
+public class Skill extends PanacheEntity {
 
-    @NotEmpty
+    @ManyToOne
+    private Organization organization;
+
     private String name;
-
-    @NotNull
-    private SkillType type;
-
-    @NotNull
-    private SkillCategory category;
 }

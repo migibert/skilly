@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
@@ -28,14 +28,14 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-// Expected props: organization { name, logo, website }
+// Expected props: organization { name, logoUrl }
 const OrganizationItem = (props) => {
     const classes = useStyles();
 
     return (
       <Card className={classes.card}>
         <CardHeader title={props.organization.name} />
-        <CardMedia className={classes.media} image={props.organization.logo} title={props.organization.name} />
+        <CardMedia className={classes.media} image={props.organization.logoUrl} title={props.organization.name} />
         <CardActions>
           <IconButton aria-label="Invite member">
             <PersonAdd />
@@ -46,7 +46,7 @@ const OrganizationItem = (props) => {
           <IconButton aria-label="Charts">
             <Timeline />
           </IconButton>
-          <IconButton aria-label="Edit" onClick={() => { props.history.push(`/organizations/${props.organization.name}`)}}>
+          <IconButton aria-label="Edit" onClick={() => { props.history.push(`/organizations/${props.organization.id}`)}}>
             <Edit />
           </IconButton>
           <IconButton aria-label="Delete">
