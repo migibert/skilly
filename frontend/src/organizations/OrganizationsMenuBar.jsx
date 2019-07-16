@@ -51,7 +51,8 @@ export default function OrganizationsMenuBar() {
         console.error(error);
       }
     }
-    fetchOrganizations();
+    fetchOrganizations();  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleDialogOpen() {

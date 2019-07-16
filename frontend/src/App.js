@@ -13,7 +13,7 @@ import './App.css';
 import React, { useState } from 'react';
 import { setGlobal } from 'reactn';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';

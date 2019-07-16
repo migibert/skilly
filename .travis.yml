@@ -1,0 +1,30 @@
+matrix:
+  include:
+    - language: java
+      jdk:
+        - oraclejdk11
+        - openjdk11
+      before_script:
+        - psql -c "CREATE DATABASE skilly;" -U postgres
+        - psql -c "CREATE USER sarah WITH PASSWORD 'connor';" -U postgres      
+        - cd backend
+      script:
+        - ./mvnw clean test
+
+    - language: node_js
+      node_js:
+        - "stable"
+      cache:
+        directories:
+          - node_modules
+      before_script:
+        - psql -c "CREATE DATABASE skilly;" -U postgres
+        - psql -c "CREATE USER sarah WITH PASSWORD 'connor';" -U postgres
+        - cd frontend
+      script:
+        - npm ci      
+        - npm test
+        - npm run build
+
+services:
+  - postgresql
