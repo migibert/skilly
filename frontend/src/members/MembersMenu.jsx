@@ -109,12 +109,11 @@ export default function TalentsMenu() {
     const [filteredMembers, setFilteredMembers] = useState([]);
 
     useEffect(() => {
-      setFilteredMembers(members);
-    }, []);
+      setFilteredMembers(members.filter(member => member.firstname.toLowerCase().startsWith(search) || member.lastname.toLowerCase().startsWith(search)));
+    }, [search]);
 
     function handleSearch(e) {
       setSearch(e.target.value);
-      setFilteredMembers(members.filter(member => member.firstname.toLowerCase().startsWith(e.target.value) || member.lastname.toLowerCase().startsWith(e.target.value)));
     }
 
     return (
